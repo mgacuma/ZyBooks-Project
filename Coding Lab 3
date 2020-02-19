@@ -118,7 +118,7 @@ int main() {
    cout << "Enter a sample text: \n";
    getline(cin, in);
 
-   cout << "You entered: " << in;
+   cout << "You entered: \n" << in << endl;
 
    PrintMenu(in);
 
