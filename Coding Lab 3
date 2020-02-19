@@ -8,8 +8,24 @@ void PrintMenu(string in){
   cout << "MENU\nc - Number of non-whitespace characters\nw - Number of words\nf - Find text\nr - Replace all !'s\ns - Shorten spaces\nq - Quit\n\nChoose an option: ";
   cin >> func;
   
-  
-  
+    while (1){
+      if (func == "c"){
+        int ws = GetNumOfNonWSCharacters(in);
+        cout << "Number of non-whitespace characters: " << ws << endl;
+      }
+       
+
+
+    }
+  }
+}
+
+int GetNumOfNonWSCharacters(string in){
+    int i, counter, n = in.length();
+    for (i = 0; i < n; i++){
+      if (in.at(i) == " ") counter++;
+    }
+    return counter;
 }
 
 int main() {
