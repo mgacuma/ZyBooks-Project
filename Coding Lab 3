@@ -13,9 +13,18 @@ void PrintMenu(string in){
         int ws = GetNumOfNonWSCharacters(in);
         cout << "Number of non-whitespace characters: " << ws << endl;
       }
-       
-
-
+      
+      if (func == "w"){
+        int w = GetNumOfWords(in);
+        cout << "Number of words: " << w << endl;
+      }
+      
+      if (func == "f"){
+        int f = FindText(in);
+      }
+      
+      
+      
     }
   }
 }
@@ -23,10 +32,28 @@ void PrintMenu(string in){
 int GetNumOfNonWSCharacters(string in){
     int i, counter, n = in.length();
     for (i = 0; i < n; i++){
-      if (in.at(i) == " ") counter++;
+      if (!in.at(i) == " ") counter++;
     }
     return counter;
 }
+
+int GetNumOfWords(string in){
+  int i, n = in.length, counter;
+  for (i = 0; i < n, i++){
+    if (in.at(i) == " ") counter++;
+  }
+  return counter - 1;
+}
+
+int FindText(){
+  string user;
+  int i, n, counter;
+  cout << "Enter a word or phrase to be found: ";
+  getline(cin, user);
+  
+  
+}
+
 
 int main() {
 
