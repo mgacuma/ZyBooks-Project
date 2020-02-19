@@ -96,7 +96,9 @@ void PrintMenu(string in){
     if (func == "s"){
         ShortenSpace(in);
     }
-
+    
+    if (func == "q") exit 0;
+    
   //  }
   }
 
