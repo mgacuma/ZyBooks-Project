@@ -21,11 +21,20 @@ int GetNumOfWords(string in){
   return counter + 1;
 }
 
-int FindText(string find, string in){
+int FindText(string findee, string in){
   int i, n, counter;
+    if (in.find(findee)!=string::npos){
+        i = in.find(findee) + findee.length() + 1;      //index of first occurence
+        counter++
+    }
+    else return 0; 
+    
+    while(in.find(find, i) != string::npos){
+        i = in.find(findee, i) + findee.length() + 1;
+        counter++;
+    }
 
-
-
+    return counter;
 }
 
 void ReplaceExclamation(string in){
