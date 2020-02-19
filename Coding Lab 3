@@ -47,6 +47,21 @@ void ReplaceExclamation(string in){
         cout << in;
 }
 
+void ShortenSpace(string in){
+    int i, n;
+    n = in.length;
+    
+    for(i = 0; i < n; i++){
+        if (in.at(i) == ' ' && in.at(i+1) == ' '){
+            in.replace(i, 2, " ");
+            i--;
+        }
+    }
+    
+    cout << in;
+}
+
+
 
 void PrintMenu(string in){
   string func;
@@ -79,8 +94,7 @@ void PrintMenu(string in){
     }
 
     if (func == "s"){
-
-
+        ShortenSpace(in);
     }
 
   //  }
