@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void PrintMenu(string in){
+  string func;
+  
+  cout << "MENU\nc - Number of non-whitespace characters\nw - Number of words\nf - Find text\nr - Replace all !'s\ns - Shorten spaces\nq - Quit\n\nChoose an option: ";
+  cin >> func;
+  
+  
+  
+}
+
+int main() {
+
+   /* Type your code here. */
+   string in;
+   cout << "Enter a sample text: \n";
+   getline(cin, in);
+   
+   cout << "You entered: " << in;
+   
+   PrintMenu(in);
+
+   return 0;
+}
