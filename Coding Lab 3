@@ -20,7 +20,12 @@ void PrintMenu(string in){
       }
       
       if (func == "f"){
-        int f = FindText(in);
+        string text;
+        cout << "Enter a word or phrase to be found: \n";
+        cin.ignore();
+        getline(cin, text);
+        int f = FindText(text, in);
+        cout << """ << text << "" instances: " << f; 
       }
       
       
@@ -45,11 +50,9 @@ int GetNumOfWords(string in){
   return counter - 1;
 }
 
-int FindText(){
-  string user;
+int FindText(string find, string in){
   int i, n, counter;
-  cout << "Enter a word or phrase to be found: ";
-  getline(cin, user);
+  
   
   
 }
