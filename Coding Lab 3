@@ -1,61 +1,83 @@
 #include <iostream>
 #include <string>
+
+
 using namespace std;
+
+int GetNumOfNonWSCharacters(string in){
+    int i, counter, n = in.length();
+    for (i = 0; i < n; i++){
+      if (!in.at(i) == ' ') counter++;
+    }
+    return counter;
+}
+
+int GetNumOfWords(string in){
+  int i, n, counter;
+  n = in.length();
+  for (i = 0; i < n; i++){
+    if (in.at(i) == ' ') counter++;
+  }
+  return counter + 1;
+}
+
+int FindText(string find, string in){
+  int i, n, counter;
+
+
+
+}
+
+void ReplaceExclamation(string in){
+    int i, n = in.length();
+        for (i = 0; i < n; i++){
+            if(in.at(i) == '!'){
+                in.at(i) = '.';
+            }
+        }
+        cout << in;
+}
+
 
 void PrintMenu(string in){
   string func;
-  
+
   cout << "MENU\nc - Number of non-whitespace characters\nw - Number of words\nf - Find text\nr - Replace all !'s\ns - Shorten spaces\nq - Quit\n\nChoose an option: ";
   cin >> func;
-  
-    while (1){
+
+   // while (1){
       if (func == "c"){
         int ws = GetNumOfNonWSCharacters(in);
         cout << "Number of non-whitespace characters: " << ws << endl;
       }
-      
+
       if (func == "w"){
         int w = GetNumOfWords(in);
         cout << "Number of words: " << w << endl;
       }
-      
+
       if (func == "f"){
         string text;
         cout << "Enter a word or phrase to be found: \n";
         cin.ignore();
         getline(cin, text);
         int f = FindText(text, in);
-        cout << """ << text << "" instances: " << f; 
+        cout << """ << text << "" instances: " << f;
       }
-      
-      
-      
+
+    if (func == "r"){
+         ReplaceExclamation(in);
     }
-  }
-}
 
-int GetNumOfNonWSCharacters(string in){
-    int i, counter, n = in.length();
-    for (i = 0; i < n; i++){
-      if (!in.at(i) == " ") counter++;
+    if (func == "s"){
+
+
     }
-    return counter;
-}
 
-int GetNumOfWords(string in){
-  int i, n = in.length, counter;
-  for (i = 0; i < n, i++){
-    if (in.at(i) == " ") counter++;
+  //  }
   }
-  return counter - 1;
-}
 
-int FindText(string find, string in){
-  int i, n, counter;
-  
-  
-  
-}
+
 
 
 int main() {
@@ -64,9 +86,9 @@ int main() {
    string in;
    cout << "Enter a sample text: \n";
    getline(cin, in);
-   
+
    cout << "You entered: " << in;
-   
+
    PrintMenu(in);
 
    return 0;
