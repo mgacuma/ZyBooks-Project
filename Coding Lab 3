@@ -7,7 +7,7 @@ using namespace std;
 int GetNumOfNonWSCharacters(string in){
     int i, counter, n = in.length();
     for (i = 0; i < n; i++){
-      if (!in.at(i) == ' ') counter++;
+      if (!(in.at(i) == ' ')) counter++;
     }
     return counter;
 }
@@ -22,14 +22,14 @@ int GetNumOfWords(string in){
 }
 
 int FindText(string findee, string in){
-  int i, n, counter;
+  int i, counter = 0;
     if (in.find(findee)!=string::npos){
         i = in.find(findee) + findee.length() + 1;      //index of first occurence
-        counter++
+        counter++;
     }
     else return 0; 
     
-    while(in.find(find, i) != string::npos){
+    while(in.find(findee, i) != string::npos){
         i = in.find(findee, i) + findee.length() + 1;
         counter++;
     }
@@ -49,7 +49,7 @@ void ReplaceExclamation(string in){
 
 void ShortenSpace(string in){
     int i, n;
-    n = in.length;
+    n = in.length();
     
     for(i = 0; i < n; i++){
         if (in.at(i) == ' ' && in.at(i+1) == ' '){
@@ -97,7 +97,7 @@ void PrintMenu(string in){
         ShortenSpace(in);
     }
     
-    if (func == "q") exit 0;
+    if (func == "q") exit (0);
     
   //  }
   }
