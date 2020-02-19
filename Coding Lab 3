@@ -16,8 +16,13 @@ int GetNumOfWords(string in){
   int i, n, counter;
   n = in.length();
   for (i = 0; i < n; i++){
-    if (in.at(i) == ' ') counter++;
+    if (in.at(i) == ' '){
+        counter++;
+    }
   }
+  
+  if (in.back() == ' ') counter--;
+  
   return counter + 1;
 }
 
@@ -66,7 +71,7 @@ void ShortenSpace(string in){
 void PrintMenu(string in){
   string func;
 
-  cout << "MENU\nc - Number of non-whitespace characters\nw - Number of words\nf - Find text\nr - Replace all !'s\ns - Shorten spaces\nq - Quit\n\nChoose an option: ";
+  cout << "\nMENU\nc - Number of non-whitespace characters\nw - Number of words\nf - Find text\nr - Replace all !'s\ns - Shorten spaces\nq - Quit\n\nChoose an option: \n";
   cin >> func;
 
    // while (1){
@@ -82,11 +87,12 @@ void PrintMenu(string in){
 
       if (func == "f"){
         string text;
+        char p = '"';
         cout << "Enter a word or phrase to be found: \n";
         cin.ignore();
         getline(cin, text);
         int f = FindText(text, in);
-        cout << """ << text << "" instances: " << f;
+        cout << p << text << p << " instances: " << f;
       }
 
     if (func == "r"){
