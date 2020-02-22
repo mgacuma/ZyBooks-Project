@@ -55,15 +55,21 @@ void ReplaceExclamation(string in){
 }
 
 void ShortenSpace(string in){
-    int i, n;
+    int i, n, spaces=1, hold;
     n = in.length();
     
     for(i = 0; i < n; i++){
-        if (in.at(i) == ' ' && in.at(i+1) == ' '){
-            in.replace(i, 2, " ");
-            i--;
+        if(in.at(i) == ' '){
+            hold = i;
+            while(in.at(i+spaces) == ' '){
+                hold++;
+                spaces++;
+            }
+         in.replace(i, spaces, " ");
         }
+        n = in.length();
     }
+   
     
     cout << in;
 }
@@ -74,40 +80,43 @@ void PrintMenu(string in){
   string func;
 
   cout << "\nMENU\nc - Number of non-whitespace characters\nw - Number of words\nf - Find text\nr - Replace all !'s\ns - Shorten spaces\nq - Quit\n\nChoose an option: \n";
-  cin >> func;
+  
+        //for(cin >> func; func != "q"; ){
+         cin >> func;
+         
+          if (func == "c"){
+            int ws = GetNumOfNonWSCharacters(in);
+            cout << "Number of non-whitespace characters: " << ws << endl;
+          }
 
-   // while (1){
-      if (func == "c"){
-        int ws = GetNumOfNonWSCharacters(in);
-        cout << "Number of non-whitespace characters: " << ws << endl;
-      }
+          if (func == "w"){
+            int w = GetNumOfWords(in);
+            cout << "Number of words: " << w << endl;
+          }
 
-      if (func == "w"){
-        int w = GetNumOfWords(in);
-        cout << "Number of words: " << w << endl;
-      }
+          if (func == "f"){
+            string text;
+            char p = '"';
+            cout << "Enter a word or phrase to be found: \n";
+            cin.ignore();
+            getline(cin, text);
+            int f = FindText(text, in);
+            cout << p << text << p << " instances: " << f;
+          }
 
-      if (func == "f"){
-        string text;
-        char p = '"';
-        cout << "Enter a word or phrase to be found: \n";
-        cin.ignore();
-        getline(cin, text);
-        int f = FindText(text, in);
-        cout << p << text << p << " instances: " << f;
-      }
+        if (func == "r"){
+             ReplaceExclamation(in);
+        }
 
-    if (func == "r"){
-         ReplaceExclamation(in);
-    }
+        if (func == "s"){
+            ShortenSpace(in);
+        }
 
-    if (func == "s"){
-        ShortenSpace(in);
-    }
-    
-    if (func == "q") exit (0);
-    
-  //  }
+        if (func == "q") exit (0);
+
+        //}
+        
+        
   }
 
 
