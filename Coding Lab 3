@@ -44,7 +44,7 @@ int FindText(string findee, string in){
     return counter;
 }
 
-void ReplaceExclamation(string in){
+void ReplaceExclamation(string &in){
     int i, n = in.length();
         for (i = 0; i < n; i++){
             if(in.at(i) == '!'){
@@ -54,7 +54,7 @@ void ReplaceExclamation(string in){
         cout << in;
 }
 
-void ShortenSpace(string in){
+void ShortenSpace(string &in){
     int i, n, spaces=1, hold;
     n = in.length();
     
