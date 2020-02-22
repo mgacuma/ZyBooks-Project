@@ -60,6 +60,7 @@ void ShortenSpace(string in){
     
     for(i = 0; i < n; i++){
         if(in.at(i) == ' '){
+            spaces = 1;
             hold = i;
             while(in.at(hold+1) == ' '){
                 spaces++;
