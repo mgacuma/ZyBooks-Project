@@ -5,24 +5,26 @@
 using namespace std;
 
 int GetNumOfNonWSCharacters(string in){
-    int i, counter, n = in.length();
+    int i, counter = 0, n = in.length();
     for (i = 0; i < n; i++){
-      if (!(in.at(i) == ' ')) counter++;
+      if (!(in.at(i) == 32)) counter++;
     }
     return counter;
 }
 
 int GetNumOfWords(string in){
-  int i, n, counter;
+  int i, n, counter=0;
   n = in.length();
   for (i = 0; i < n; i++){
     if (in.at(i) == ' '){
-        counter++;
+        if(in.at(i+1) == ' '){
+            counter++;
+            i++;
+        }
+        else counter++;
     }
   }
-  
   if (in.back() == ' ') counter--;
-  
   return counter + 1;
 }
 
