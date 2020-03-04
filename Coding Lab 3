@@ -1,7 +1,50 @@
+
 #include<iostream>
 #include<string>
 #include<vector>
-
 using namespace std;
 
 
+
+void matrixInit( vector<vector<int> >& matrix, int numRows, int numCols){
+    int i, j;
+    matrix.resize(numRows, std::vector<int>(numCols));
+
+    for (i = 0; i < numRows; i++){
+        matrix.at(i).resize(numCols);
+    }
+
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            matrix.at(i).at(j) = i * j;
+        }
+    }
+
+}
+
+void print(vector<vector<int>> matrix){
+    int i = 0, j = 0;
+
+    for (i = 0; i < matrix.size(); i++){
+        for (j = 0; j < matrix.at(1).size(); j++){
+            cout << "matrix[" << i << "][" << j << "]=" << matrix.at(i).at(j) << endl;
+        }
+    }
+}
+
+
+int main(){
+    int rows, cols;
+    vector<vector<int>> mat;
+
+    cin >> rows;
+    cin >> cols;
+
+    matrixInit( mat, rows, cols);
+    print(mat);
+
+
+
+
+    return 0;
+}
