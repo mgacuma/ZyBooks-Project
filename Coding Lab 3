@@ -24,23 +24,36 @@ ostream& operator << (ostream& os, const TokenFreq& rhs){
 ////////////////////////FUNCTIONS////////////////////////
 
 void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
-    int i;
+    int i, indicator;
     string topush;
     stringstream stream(istr);
     TokenFreq temp;
 
     while(getline(stream, topush, ' ')){
+       
         if (tfVec.empty()){
             temp.token = topush;
             temp.freq = 1;
-            tfVec.push_back(temp); 
+            tfVec.push_back(temp);
+            cout << "VECTOR INITIALIZED WITH FIRST TOKEN: " << topush << endl;
         }
+        
         else {
             for (i = 0; i < tfVec.size(); i++){
                 if (topush == tfVec.at(i).token){
                     tfVec.at(i).freq++;
+                    cout << "added 1 freq to " << topush << endl;
+                    cout << "ITERATION " << i << " BREAKS\n";
+                    break;
+                }
+                else {
+                    temp.token = topush;
+                    temp.freq = 1;
+                    tfVec.push_back(temp);
+                    cout << "pushed " << topush << " to stack with freq 1" << endl;
                 }
             }
+
         }
     }
 
@@ -97,6 +110,7 @@ int main(){
 
     getTokenFreqVec(s, tf);
 
+    cout << tf.size() << endl;
     for (i = 0; i < tf.size(); i++){
         cout << tf.at(i) << endl;
     }
