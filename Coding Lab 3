@@ -83,7 +83,9 @@ int main(){
 
     getTokenFreqVec(s, tf);
 
-
+    for(i = 0; i < tf.size(); i++){
+        cout << tf.at(i).token << " ";
+    }
 
 
 
