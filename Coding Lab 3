@@ -28,10 +28,13 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
     string topush;
     stringstream stream(istr);
     TokenFreq temp;
+    bool match = false;
 
     while(getline(stream, topush, ' ')){
-       
+    cout << "PORCESSING STRING\n";
+    
         if (tfVec.empty()){
+            cout << "VECTOR EMPTY\n";
             temp.token = topush;
             temp.freq = 1;
             tfVec.push_back(temp);
@@ -39,21 +42,25 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
         }
         
         else {
+            cout << "VECTOR NOT EMPTY. SIZE IS: " << tfVec.size() << endl;
             for (i = 0; i < tfVec.size(); i++){
+                cout << "ITERATION: " << i << endl;
+                cout << "COMPARING " << topush << " WITH " << tfVec.at(i).token; << endl;
                 if (topush == tfVec.at(i).token){
                     tfVec.at(i).freq++;
-                    cout << "added 1 freq to " << topush << endl;
-                    cout << "ITERATION " << i << " BREAKS\n";
+                    cout << "TOKENS MATCH! FREQ++. NEW FREQ: " << tfVec.at(i).freq;
+                    match = true;
                     break;
                 }
-                else {
-                    temp.token = topush;
-                    temp.freq = 1;
-                    tfVec.push_back(temp);
-                    cout << "pushed " << topush << " to stack with freq 1" << endl;
-                }
             }
-
+            
+           if(!match) {
+                cout << "TOKENS DONT MATCH"
+                temp.token = topush;
+                temp.freq = 1;
+                tfVec.push_back(temp);
+                cout << "PUSHED " << topush << " TO STACK WITH FREQ 1" << endl;
+            }
         }
     }
 
