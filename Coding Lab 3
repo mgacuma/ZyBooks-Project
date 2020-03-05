@@ -32,17 +32,20 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
     TokenFreq temp = {topush, 1};
     tfVec.push_back(temp);
 
+
     while(getline(stream, topush, ' ')){
         for(i = 0; i < tfVec.size(); i++){
             if (topush == tfVec.at(i).token){
                 tfVec.at(i).freq++;
             }
+
             else {
-                TokenFreq newTok = {topush, 0};
+                TokenFreq newTok = {topush, 1};
                 tfVec.push_back(newTok);
             }
         }
     }
+
 }
 
 
@@ -90,6 +93,7 @@ int main(){
 
 
     cin >> s;
+
     vector<TokenFreq> tf;
 
     getTokenFreqVec(s, tf);
