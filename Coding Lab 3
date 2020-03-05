@@ -4,6 +4,35 @@
 #include<vector>
 using namespace std;
 
+////////////////////////STRUCTS////////////////////////
+
+struct TokenFreq{
+    string token;
+    int freq;
+}
+
+////////////////////////FUNCTIONS////////////////////////
+
+void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
+
+    string topush;
+    stringstream stream(istr);
+
+    getline(stream, topush, ' ');
+    TokenFreq temp = {topush, -1};
+
+    while(getline(stream, topush, ' ')){
+        for(i = 0; i < tfVec.size(); i++){
+            if (topush == tfVec.at(i).token){
+                tfVec.at(i).freq++;
+            }
+            else {
+                TokenFreq newTok = {topsuh, 0};
+                tfVec.push_back(newTok);
+            }
+        }
+    }
+}
 
 
 void matrixInit( vector<vector<int> >& matrix, int numRows, int numCols){
@@ -22,6 +51,8 @@ void matrixInit( vector<vector<int> >& matrix, int numRows, int numCols){
 
 }
 
+
+
 void print(vector<vector<int>> matrix){
     int i = 0, j = 0;
 
@@ -32,9 +63,10 @@ void print(vector<vector<int>> matrix){
     }
 }
 
+////////////////////////MAIN////////////////////////
 
 int main(){
-    int rows, cols;
+    int rows, cols, i, j;
     vector<vector<int>> mat;
 
     cin >> rows;
@@ -42,6 +74,18 @@ int main(){
 
     matrixInit( mat, rows, cols);
     print(mat);
+
+    string s;
+
+
+    cin >> s;
+    vector<TokenFreq> tf;
+
+    getTokenFreqVec(s, tf);
+
+
+
+
 
 
 
