@@ -8,8 +8,8 @@ using namespace std;
 ////////////////////////STRUCTS////////////////////////
 
 struct TokenFreq{
-    string token = "";
-    int freq = 0;
+    string token;
+    int freq;
 
 
 };
@@ -27,21 +27,19 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
     int i;
     string topush;
     stringstream stream(istr);
-
-    getline(stream, topush, ' ');
-    TokenFreq temp = {topush, 1};
-    tfVec.push_back(temp);
-
+    TokenFreq temp;
 
     while(getline(stream, topush, ' ')){
-        for(i = 0; i < tfVec.size(); i++){
-            if (topush == tfVec.at(i).token){
-                tfVec.at(i).freq++;
-            }
-
-            else {
-                TokenFreq newTok = {topush, 1};
-                tfVec.push_back(newTok);
+        if (tfVec.empty()){
+            temp.token = topush;
+            temp.freq = 1;
+            tfVec.push_back(temp); 
+        }
+        else {
+            for (i = 0; i < tfVec.size(); i++){
+                if (topush == tfVec.at(i).token){
+                    tfVec.at(i).freq++;
+                }
             }
         }
     }
@@ -91,8 +89,9 @@ int main(){
 
     string s;
 
+    getline(cin, s);
 
-    cin >> s;
+    cout << "string: " << s << endl;
 
     vector<TokenFreq> tf;
 
