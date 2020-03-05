@@ -31,7 +31,11 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
     bool match = false;
 
     while(getline(stream, topush, ' ')){
-    cout << "PORCESSING STRING\n";
+    cout << "PROCESSING STRING: " << topush << endl;
+    
+    for(char& c: topush){
+        c = tolower(c);
+    }
     
         if (tfVec.empty()){
             cout << "VECTOR EMPTY\n";
@@ -45,17 +49,17 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
             cout << "VECTOR NOT EMPTY. SIZE IS: " << tfVec.size() << endl;
             for (i = 0; i < tfVec.size(); i++){
                 cout << "ITERATION: " << i << endl;
-                cout << "COMPARING " << topush << " WITH " << tfVec.at(i).token; << endl;
+                cout << "COMPARING " << topush << " WITH " << tfVec.at(i).token << endl;
                 if (topush == tfVec.at(i).token){
                     tfVec.at(i).freq++;
-                    cout << "TOKENS MATCH! FREQ++. NEW FREQ: " << tfVec.at(i).freq;
+                    cout << "TOKENS MATCH! FREQ++. NEW FREQ: " << tfVec.at(i).freq << endl;;
                     match = true;
                     break;
                 }
             }
             
            if(!match) {
-                cout << "TOKENS DONT MATCH"
+                cout << "TOKENS DONT MATCH";
                 temp.token = topush;
                 temp.freq = 1;
                 tfVec.push_back(temp);
@@ -64,6 +68,12 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
         }
     }
 
+}
+
+char tolower(char c){
+    if( c >= 'A' && c <= 'Z')
+        return c + 32;
+    return c;
 }
 
 
