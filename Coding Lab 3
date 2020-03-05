@@ -15,9 +15,15 @@ struct TokenFreq{
 };
 
 ostream& operator << (ostream& os, const TokenFreq& rhs){
-        os << "(token = " << "\"" << rhs.token << "\"" << ", freq = " << rhs.freq << ")";
-        return os;
-    }
+    os << "(token = " << "\"" << rhs.token << "\"" << ", freq = " << rhs.freq << ")";
+    return os;
+}
+
+bool operator <= (const TokenFreq& lhs, const TokenFreq& rhs){
+    bool res= false;
+    if (lhs.freq <= rhs.freq) res = true;
+    return res;
+}
 
 
 
@@ -32,11 +38,11 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
 
     while(getline(stream, topush, ' ')){
     cout << "PROCESSING STRING: " << topush << endl;
-    
+
     for(char& c: topush){
         c = tolower(c);
     }
-    
+
         if (tfVec.empty()){
             cout << "VECTOR EMPTY\n";
             temp.token = topush;
@@ -44,7 +50,7 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
             tfVec.push_back(temp);
             cout << "VECTOR INITIALIZED WITH FIRST TOKEN: " << topush << endl;
         }
-        
+
         else {
             cout << "VECTOR NOT EMPTY. SIZE IS: " << tfVec.size() << endl;
             for (i = 0; i < tfVec.size(); i++){
@@ -57,7 +63,7 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
                     break;
                 }
             }
-            
+
            if(!match) {
                 cout << "TOKENS DONT MATCH";
                 temp.token = topush;
@@ -131,11 +137,6 @@ int main(){
     for (i = 0; i < tf.size(); i++){
         cout << tf.at(i) << endl;
     }
-
-
-
-
-
 
 
     return 0;
