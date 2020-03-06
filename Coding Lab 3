@@ -41,7 +41,7 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
 
     while(getline(stream, topush, ' ')){
     match = false;
-    if (topush==" ") continue;
+    if (topush=="") continue;
     for(char& c: topush){
         c = tolower(c);
     }
@@ -70,7 +70,7 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
     }
     cout << "size = " << tfVec.size() << endl;
     for (i = 0; i < tfVec.size(); i++){
-        cout << "\t[" << i << "] =" << tfVec.at(i) << endl; 
+        cout << "\t[" << i << "] =" << tfVec.at(i) << endl;
     }
 }
 
@@ -109,6 +109,52 @@ void print(vector<vector<int>> matrix){
     }
 }
 
+
+void selectionSort( vector<TokenFreq> & tokFreqVector ){
+    unsigned int i, j, minIndex, tmp;
+
+    TokenFreq tempToken;
+
+    for (i = 0; i < tokFreqVector.size()-1; i++){
+        minIndex = i;
+        for(j = i + 1; j < tokFreqVector.size(); j++){
+            if(tokFreqVector.at(j).freq < tokFreqVector.at(i).freq)
+                minIndex = j;
+        }
+        if(minIndex != i){
+            tempToken = tokFreqVector.at(i);
+            tokFreqVector.at(i) = tokFreqVector.at(minIndex);
+            tokFreqVector.at(minIndex) = tempToken;
+        }
+    }
+
+    for (i = 0; i < tokFreqVector.size(); i++){
+        cout << "\t[" << i << "] =" << tokFreqVector.at(i) << endl;
+    }
+}
+
+void insertionSort( vector<TokenFreq> & tokFreqVector ){
+    int i, j, tmp, length = tokFreqVector.size();
+    TokenFreq tmpToken;
+
+    for(i = 1; i < length; i++){
+        j=i;
+        while (j > 0 && tokFreqVector.at(j-1).freq < tokFreqVector.at(j).freq){
+            tmpToken = tokFreqVector.at(j);
+            tokFreqVector.at(j) = tokFreqVector.at(j-1);
+            tokFreqVector.at(j-1) = tmpToken;
+            j--;
+        }
+    }
+    cout << "\n\n";
+    for (i = 0; i < tokFreqVector.size(); i++){
+        cout << "\t[" << i << "] =" << tokFreqVector.at(i) << endl;
+    }
+
+
+}
+
+
 ////////////////////////MAIN////////////////////////
 
 int main(){
@@ -130,6 +176,9 @@ int main(){
     vector<TokenFreq> tf;
 
     getTokenFreqVec(s, tf);
+    cout << "\n\n";
+    selectionSort(tf);
+    insertionSort(tf);
 
     return 0;
 }
