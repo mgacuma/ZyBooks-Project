@@ -37,9 +37,10 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
     string topush;
     stringstream stream(istr);
     TokenFreq temp;
-    bool match = false;
+    bool match;
 
     while(getline(stream, topush, ' ')){
+    match = false;
     if (topush==" ") continue;
     for(char& c: topush){
         c = tolower(c);
@@ -67,7 +68,10 @@ void getTokenFreqVec(string& istr,vector<TokenFreq>& tfVec){
             }
         }
     }
-
+    cout << "size = " << tfVec.size() << endl;
+    for (i = 0; i < tfVec.size(); i++){
+        cout << "\t[" << i << "] =" << tfVec.at(i) << endl; 
+    }
 }
 
 char tolower(char c){
@@ -126,12 +130,6 @@ int main(){
     vector<TokenFreq> tf;
 
     getTokenFreqVec(s, tf);
-
-    cout << tf.size() << endl;
-    for (i = 0; i < tf.size(); i++){
-        cout << tf.at(i) << endl;
-    }
-
 
     return 0;
 }
